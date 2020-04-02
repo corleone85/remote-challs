@@ -6,7 +6,7 @@
 /*   By: jdiaz-co <jdiaz-co@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/02 04:56:47 by jdiaz-co          #+#    #+#             */
-/*   Updated: 2020/04/02 08:07:18 by jdiaz-co         ###   ########.fr       */
+/*   Updated: 2020/04/02 08:14:41 by jdiaz-co         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,26 +106,4 @@ int		hv_necklace(char *s1, char *s2)
 		free(temp);
 		free(temp2);
 	return (0);
-}
-
-int main (void)
-{
-    char *s1 = "";
-    char *s2 = "";
-    char *s3 = "alho";
-
-    if (hv_necklace(s1, s2) == 1)
-    {
-        write (1, "bien\n", 5);
-    }
-    else
-        write (1, "mal\n", 4);
-
-    if (hv_necklace(s1, s3) == 1)
-    {
-        write (1, "bien\n", 5);
-    }
-    else
-        write (1, "mal\n", 4);
-    return(1);
 }
