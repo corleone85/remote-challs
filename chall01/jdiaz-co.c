@@ -6,7 +6,7 @@
 /*   By: jdiaz-co <jdiaz-co@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/02 04:56:47 by jdiaz-co          #+#    #+#             */
-/*   Updated: 2020/04/02 07:41:21 by jdiaz-co         ###   ########.fr       */
+/*   Updated: 2020/04/02 08:07:18 by jdiaz-co         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,27 +86,46 @@ int		hv_necklace(char *s1, char *s2)
 	int		i;
 	int		j;
 	
-	i = 0;	
-	j = 0;
 	if ((i = ft_strlen(s1)) != (j = ft_strlen(s2)))
 		return(0);
-	if (ft_strlen(s1) == 0)
-		return (1);
-	else if (ft_strlen(s1) == ft_strlen(s2))
+	temp = (char*)malloc(sizeof(*s1) * (i + 1));
+	temp2 = (char*)malloc(sizeof(*s1) * (i + 1));
+	while (i >= 0)
 	{
-		temp = (char*)malloc(sizeof(*s1) * (i + 1));
-		temp2 = (char*)malloc(sizeof(*s1) * (i + 1));
-		while (i >= 0)
+		if (ft_strncmp(s1,s2, ft_strlen(s1)) == 0)
 		{
-			if (ft_strncmp(s1,s2, ft_strlen(s1)) == 0)
-				return (1);
-			temp[0] = s2[j - 1];
-			temp2 = ft_substr(s2, 0, s2[j - 2]);
-			s2 = ft_strjoin(temp, temp2);
-			i--;
+			free(temp);
+			free(temp2);
+			return (1);
 		}
+		temp[0] = s2[j - 1];
+		temp2 = ft_substr(s2, 0, s2[j - 2]);
+		s2 = ft_strjoin(temp, temp2);
+		i--;
+	}
 		free(temp);
 		free(temp2);
-	}
 	return (0);
+}
+
+int main (void)
+{
+    char *s1 = "";
+    char *s2 = "";
+    char *s3 = "alho";
+
+    if (hv_necklace(s1, s2) == 1)
+    {
+        write (1, "bien\n", 5);
+    }
+    else
+        write (1, "mal\n", 4);
+
+    if (hv_necklace(s1, s3) == 1)
+    {
+        write (1, "bien\n", 5);
+    }
+    else
+        write (1, "mal\n", 4);
+    return(1);
 }
